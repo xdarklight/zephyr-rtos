@@ -1,0 +1,72 @@
+/*
+ * Copyright (c) 2021 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+
+#include <mem.h>
+
+#include "skeleton.dtsi"
+
+/ {
+	model = "Amlogic Meson Always-On ARC EM4";
+	compatible = "amlogic,meson-ao-arc-em4", "snps,emsdp";
+
+	aliases {
+		uart-0 = &uart_AO;
+	};
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart_AO;
+		zephyr,shell-uart = &uart_AO;
+	};
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "snps,arcem";
+			reg = <0>;
+		};
+	};
+
+	intc: arcv2-intc {
+		compatible = "snps,arcv2-intc";
+		interrupt-controller;
+		#interrupt-cells = <2>;
+	};
+
+	soc {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		compatible = "simple-bus";
+		ranges;
+
+		sram0: memory@0 {
+			compatible = "mmio-sram";
+			reg = <0x0 DT_SIZE_K(32)>;
+		};
+
+		aobus: bus@c8100000 {
+			compatible = "simple-bus";
+
+			reg = <0xc8100000 0x100000>;
+			ranges = <0x0 0xc8100000 0x100000>;
+
+			#address-cells = <1>;
+			#size-cells = <1>;
+
+			uart_AO: serial@4c0 {
+				compatible = "amlogic,meson-uart";
+				reg = <0x4c0 0x18>;
+				label = "UART_0";
+				current-speed = <115200>;
+			};
+		};
+	};
+};

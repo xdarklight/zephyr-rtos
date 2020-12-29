@@ -1,0 +1,9 @@
+# Copyright (c) 2021 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_AMLOGIC_AO_EM4
+
+config BOARD
+	default "amlogic_ao_em4"
+
+endif # BOARD_AMLOGIC_AO_EM4
