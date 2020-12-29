@@ -1,0 +1,12 @@
+identifier: meson8_ao_em4
+name: Amlogic Meson8/8b/8m2 Always-On ARC EM4
+type: mcu
+arch: arc
+toolchain:
+  - zephyr
+  - xtools
+ram: 32
+testing:
+  ignore_tags:
+    - net
+    - bluetooth
