@@ -1,0 +1,9 @@
+# Copyright (c) 2021 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+# SPDX-License-Identifier: Apache-2.0
+
+config UART_MESON
+	bool "Amlogic Meson UART driver"
+	depends on ARC
+	select SERIAL_HAS_DRIVER
+	help
+	  This option enables the Amlogic Meson UART driver, for UART_0.
