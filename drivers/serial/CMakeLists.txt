@@ -36,6 +36,7 @@ zephyr_library_sources_ifdef(CONFIG_UART_XLNX_UARTLITE uart_xlnx_uartlite.c)
 zephyr_library_sources_ifdef(CONFIG_UART_XMC4XXX uart_xmc4xxx.c)
 zephyr_library_sources_ifdef(CONFIG_UART_NPCX uart_npcx.c)
 zephyr_library_sources_ifdef(CONFIG_UART_APBUART uart_apbuart.c)
+zephyr_library_sources_ifdef(CONFIG_UART_AMLOGIC uart_amlogic.c)
 
 zephyr_library_sources_ifdef(CONFIG_USERSPACE   uart_handlers.c)
 
